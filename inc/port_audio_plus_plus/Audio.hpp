@@ -7,9 +7,11 @@
 #ifndef AUDIO_HPP
 #define AUDIO_HPP
 
+#include <cstdint>
 #include <string>
 #include <vector>
 #include <functional>
+#include <boost/circular_buffer.hpp>
 #include "portaudio.h"
 #include "AudioDevice.hpp"
 
@@ -22,7 +24,10 @@ namespace Pricetec {
 
     class Audio {
         public:
-            Audio();
+            Audio(AudioDevice dev,
+                  uint32_t bytesPerFrame,
+                  uint32_t framesPerBuf = 100,
+                  AudioMode mode = AudioMode::INPUT);
             ~Audio();
             bool ready();
             static std::vector<AudioDevice> availableDevices();
@@ -32,6 +37,10 @@ namespace Pricetec {
 
         private:
             bool isInitialized;
+            AudioDevice device;
+            AudioMode mode;
+            boost::circular_buffer<uint8_t> inputBuffer;
+            boost::circular_buffer<uint8_t> outputBuffer;
     };
 } // namespace Pricetec
 

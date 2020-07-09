@@ -13,13 +13,6 @@ void printDeviceInfo(std::vector<Pricetec::AudioDevice> devices);
  *  MAIN
  */
 int main(int argc, const char *argv[]) {
-    Pricetec::Audio myAudio;
-
-    if (!myAudio.ready()) { // Ensure we successfully initialized PortAudio
-        std::cout << "Unable to init!\n";
-        exit(EXIT_FAILURE);
-    }
-
     // Use the lambda as a filtering predicate to only get devices
     // with '(hw:' included in the name.
     auto hwDevs = Pricetec::Audio::filterAvailableDevices(

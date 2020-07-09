@@ -6,6 +6,7 @@ if(${CMAKE_VERSION} VERSION_LESS 3.12)
 endif()
 
 find_package(portaudio REQUIRED)
+find_package(Boost REQUIRED)
 
 # convenience vars for src and includes
 set(
