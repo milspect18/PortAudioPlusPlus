@@ -14,6 +14,12 @@
 #include "AudioDevice.hpp"
 
 namespace Pricetec {
+    enum class AudioMode: uint8_t {
+        INPUT = 0,
+        OUTPUT,
+        DUPLEX
+    };
+
     class Audio {
         public:
             Audio();
