@@ -65,4 +65,13 @@ namespace Pricetec {
 
         return filtered;
     }
+
+    AudioDevice deviceFromPaInfo(const PaDeviceInfo *devInfo) {
+        return AudioDevice(
+            devInfo->name,
+            devInfo->defaultSampleRate,
+            devInfo->maxInputChannels,
+            devInfo->maxOutputChannels
+        );
+    }
 }

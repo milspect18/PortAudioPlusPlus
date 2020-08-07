@@ -41,6 +41,8 @@ namespace Pricetec {
             AudioMode mode;
             boost::circular_buffer<uint8_t> inputBuffer;
             boost::circular_buffer<uint8_t> outputBuffer;
+
+            static AudioDevice deviceFromPaInfo(const PaDeviceInfo *devInfo);
     };
 } // namespace Pricetec
 
