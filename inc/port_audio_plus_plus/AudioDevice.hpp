@@ -17,7 +17,6 @@ namespace Pricetec {
         int inputChannels;
         int outputChannels;
 
-        AudioDevice(const PaDeviceInfo *info);
         AudioDevice(std::string name = "", int rate = -1, int inChns = -1, int outChns = -1);
     };
 }

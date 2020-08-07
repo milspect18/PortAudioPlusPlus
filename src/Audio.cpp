@@ -38,7 +38,15 @@ namespace Pricetec {
             int numDevs = Pa_GetDeviceCount();
 
             for(int i = 0; i < numDevs; i++) {
-                devsFound.push_back(AudioDevice(Pa_GetDeviceInfo(i)));
+                const PaDeviceInfo *paInfo = Pa_GetDeviceInfo(i);
+                auto device = AudioDevice(
+                    paInfo->name,
+                    paInfo->defaultSampleRate,
+                    paInfo->maxInputChannels,
+                    paInfo->maxOutputChannels
+                );
+
+                devsFound.push_back(device);
             }
 
             Pa_Terminate();
