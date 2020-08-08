@@ -14,10 +14,12 @@ namespace Pricetec {
         if (this->isInitialized) {
            this->inputBuffer = boost::circular_buffer<uint8_t>(cfg.bytesPerPeriod() * NUM_PERIODS_IN_BUF);
            this->outputBuffer = boost::circular_buffer<uint8_t>(cfg.bytesPerPeriod() * NUM_PERIODS_IN_BUF);
+           this->configurePortAudio();
         } else {
             std::cout << "Failed to initialize!!!\n";
         }
     }
+
 
     Audio::~Audio() {
         if (this->isInitialized) {
@@ -25,9 +27,11 @@ namespace Pricetec {
         }
     }
 
+
     bool Audio::ready() {
         return this->isInitialized;
     }
+
 
     std::vector<AudioDevice> Audio::availableDevices() {
         std::vector<AudioDevice> devsFound;
@@ -47,6 +51,7 @@ namespace Pricetec {
         return devsFound;
     }
 
+
     std::vector<AudioDevice> Audio::filterAvailableDevices(std::function<bool(AudioDevice)> where) {
         std::vector<AudioDevice> filtered;
         auto allDevs = Audio::availableDevices();
@@ -56,6 +61,7 @@ namespace Pricetec {
         return filtered;
     }
 
+
     AudioDevice Audio::deviceFromPaInfo(const PaDeviceInfo *devInfo) {
         return AudioDevice(
             devInfo->name,
@@ -63,5 +69,10 @@ namespace Pricetec {
             devInfo->maxInputChannels,
             devInfo->maxOutputChannels
         );
+    }
+
+
+    void configurePortAudio() {
+        // Use the config data to setup port audio
     }
 }

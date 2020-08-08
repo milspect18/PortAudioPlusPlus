@@ -37,6 +37,7 @@ namespace Pricetec {
             boost::circular_buffer<uint8_t> outputBuffer;
 
             static AudioDevice deviceFromPaInfo(const PaDeviceInfo *devInfo);
+            void configurePortAudio();
     };
 } // namespace Pricetec
 
