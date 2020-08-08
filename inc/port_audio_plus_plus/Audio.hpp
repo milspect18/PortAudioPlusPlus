@@ -18,6 +18,8 @@
 
 namespace Pricetec {
     class Audio {
+        static const uint8_t NUM_PERIODS_IN_BUF = 4;
+
         public:
             Audio(AudioDevice dev, AudioConfig cfg);
             ~Audio();

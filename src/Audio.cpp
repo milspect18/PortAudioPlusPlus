@@ -12,8 +12,8 @@ namespace Pricetec {
         this->isInitialized = Pa_Initialize() == paNoError;
 
         if (this->isInitialized) {
-           this->inputBuffer = boost::circular_buffer<uint8_t>();
-           this->outputBuffer = boost::circular_buffer<uint8_t>();
+           this->inputBuffer = boost::circular_buffer<uint8_t>(cfg.bytesPerPeriod() * NUM_PERIODS_IN_BUF);
+           this->outputBuffer = boost::circular_buffer<uint8_t>(cfg.bytesPerPeriod() * NUM_PERIODS_IN_BUF);
         } else {
             std::cout << "Failed to initialize!!!\n";
         }
