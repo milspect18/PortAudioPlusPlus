@@ -13,6 +13,7 @@ set(
     PAPP_SRC
     Audio.cpp
     AudioDevice.cpp
+    AudioConfig.cpp
 )
 
 set(
