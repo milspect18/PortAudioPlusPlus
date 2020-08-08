@@ -14,20 +14,12 @@
 #include <boost/circular_buffer.hpp>
 #include "portaudio.h"
 #include "AudioDevice.hpp"
+#include "AudioConfig.hpp"
 
 namespace Pricetec {
-    enum class AudioMode: uint8_t {
-        INPUT = 0,
-        OUTPUT,
-        DUPLEX
-    };
-
     class Audio {
         public:
-            Audio(AudioDevice dev,
-                  uint32_t bytesPerFrame,
-                  uint32_t framesPerBuf = 100,
-                  AudioMode mode = AudioMode::INPUT);
+            Audio(AudioDevice dev, AudioConfig cfg);
             ~Audio();
             bool ready();
             static std::vector<AudioDevice> availableDevices();
@@ -38,7 +30,7 @@ namespace Pricetec {
         private:
             bool isInitialized;
             AudioDevice device;
-            AudioMode mode;
+            AudioConfig config;
             boost::circular_buffer<uint8_t> inputBuffer;
             boost::circular_buffer<uint8_t> outputBuffer;
 

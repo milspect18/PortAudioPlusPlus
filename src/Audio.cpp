@@ -8,14 +8,12 @@
 #include <algorithm>
 
 namespace Pricetec {
-    Audio::Audio(AudioDevice dev, uint32_t bytesPerFrame, uint32_t framesPerBuf, AudioMode mode) :
-        device(dev),
-        inputBuffer(bytesPerFrame * framesPerBuf),
-        mode(mode) {
+    Audio::Audio(AudioDevice dev, AudioConfig cfg) : device(dev), config(cfg) {
         this->isInitialized = Pa_Initialize() == paNoError;
 
         if (this->isInitialized) {
-           // Finish init stuff here
+           this->inputBuffer = boost::circular_buffer<uint8_t>();
+           this->outputBuffer = boost::circular_buffer<uint8_t>();
         } else {
             std::cout << "Failed to initialize!!!\n";
         }
