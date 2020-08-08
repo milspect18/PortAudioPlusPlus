@@ -19,6 +19,7 @@ set(
     PAPP_HDR
     ${PROJECT_INCLUDE_DIR}/Audio.hpp
     ${PROJECT_INCLUDE_DIR}/AudioDevice.hpp
+    ${PROJECT_INCLUDE_DIR}/AudioConfig.hpp
     ${PROJECT_INCLUDE_DIR}/PortAudioPlusPlus.hpp
 )
 
