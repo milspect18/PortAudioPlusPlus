@@ -7,5 +7,6 @@
 
 #include "Audio.hpp"
 #include "AudioDevice.hpp"
+#include "AudioConfig.hpp"
 
 #endif

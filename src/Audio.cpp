@@ -56,7 +56,7 @@ namespace Pricetec {
         return filtered;
     }
 
-    AudioDevice deviceFromPaInfo(const PaDeviceInfo *devInfo) {
+    AudioDevice Audio::deviceFromPaInfo(const PaDeviceInfo *devInfo) {
         return AudioDevice(
             devInfo->name,
             devInfo->defaultSampleRate,
